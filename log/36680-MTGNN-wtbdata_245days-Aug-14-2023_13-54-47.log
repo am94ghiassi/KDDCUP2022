@@ -1,0 +1,14 @@
+2023-08-14 13:54:47,068 - INFO - Log directory: ./log
+2023-08-14 13:54:47,068 - INFO - {'data_path': '/datadrive/data/grow/', 'filename': 'wtbdata_245days.csv', 'input_len': 144, 'output_len': 288, 'var_len': 5, 'capacity': 134, 'patient': 5, 'train_days': 214, 'val_days': 16, 'test_days': 0, 'total_days': 245, 'seed': 0, 'best': 0, 'num_workers': 2, 'epoch': 30, 'batch_size': 32, 'output_path': 'kfold_dtw_5_data_diff/', 'log_per_steps': 100, 'lr': 0.001, 'clip_norm': 5, 'weight_decay': 0, 'learner': 'adam', 'lr_decay': False, 'lr_scheduler_type': 'None', 'lr_eta_min': 1e-05, 'lr_decay_ratio': 0.1, 'lr_warmup_epoch': 5, 'lr_warmup_init': 1e-06, 'loss': 'FilterHuberLoss', 'conf': './config.yaml', 'model': 'MTGNN', 'gpu_id': 0, 'exp_id': '36680', 'random': False, 'enhance': True, 'only_useful': True, 'data_diff': False, 'add_apt': False, 'binary': True, 'graph_type': 'geo', 'dtw_topk': 5, 'weight_adj_epsilon': 0.8, 'gsteps': 1, 'select': ['weekday', 'time', 'Wspd', 'Etmp', 'Itmp', 'Prtv', 'Patv']}
+2023-08-14 13:54:52,266 - INFO - adding time
+2023-08-14 13:54:56,473 - INFO - geo graph links: 1008.0
+2023-08-14 13:54:56,475 - INFO - data_shape: (134, 30816, 12)
+2023-08-14 13:54:56,476 - INFO - graph: [[1. 1. 1. ... 0. 0. 0.]
+ [1. 1. 1. ... 0. 0. 0.]
+ [1. 1. 1. ... 0. 0. 0.]
+ ...
+ [0. 0. 0. ... 1. 1. 1.]
+ [0. 0. 0. ... 1. 1. 1.]
+ [0. 0. 0. ... 1. 1. 1.]]
+2023-08-14 13:55:00,290 - INFO - receptive_field: 43
+2023-08-14 13:55:00,299 - INFO - load model from  kfold_dtw_5_data_diff/36680_MTGNN/model_0.pt
