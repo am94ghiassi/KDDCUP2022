@@ -3,3 +3,4 @@
 ./npy/*
 ./output/*
 ./__pycache__/
+log/*

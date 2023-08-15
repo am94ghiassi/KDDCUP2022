@@ -5,6 +5,7 @@ import torch
 import torch.nn.functional as F
 import yaml
 import numpy as np
+import pandas as pd
 from easydict import EasyDict as edict
 from MTGNN import MTGNN
 from AGCRN import AGCRN
@@ -55,6 +56,8 @@ def predict(config, train_data):
         test_y = sorted(glob.glob(os.path.join("./data", "test_y", "*")))
 
         maes, rmses = [], []
+        pred_y_list, true_y_list = [], []
+
         for i, (test_x_f, test_y_f) in enumerate(zip(test_x, test_y)):
             test_x_ds = TestPGL4WPFDataset(filename=test_x_f)  # (B,N,T,F)
 
@@ -90,6 +93,8 @@ def predict(config, train_data):
                 3,
             ])
             test_y_df = test_y_ds.get_raw_df()
+            pred_y_list.append(pred_y)
+            true_y_list.append(test_y)
 
             _mae, _rmse = regressor_detailed_scores(
                 pred_y, test_y, test_y_df, config.capacity, config.output_len)
@@ -98,6 +103,9 @@ def predict(config, train_data):
                       _rmse + _mae) / 2))
             maes.append(_mae)
             rmses.append(_rmse)
+        
+        y_pred_true = pd.DataFrame({'y_pred':pred_y_list, 'y_true':true_y_list})
+        pd.to_pickle(y_pred_true, "./y_outputs.pickle")
 
         avg_mae = np.array(maes).mean()
         avg_rmse = np.array(rmses).mean()

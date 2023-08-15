@@ -1,5 +1,5 @@
 # dataset
-data_path: "./data"
+data_path: "/datadrive/data/grow/"
 filename: "wtbdata_245days.csv"
 input_len: 144 
 output_len: 288
